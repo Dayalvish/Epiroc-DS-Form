@@ -59,28 +59,27 @@
                         <option value="BHARAT COKING COAL LIMITED">BHARAT COKING COAL LIMITED</option>
                         <option value="RELIANCE POWER">RELIANCE POWER</option>
                         <option value="JAIPRAKASH ASSOCIATES LTD">JAIPRAKASH ASSOCIATES LTD</option>
-                        <option value="CENTRAL COALFIELDS LTD">CENTRAL COALFIELDS LTD</option> 
+                        <option value="CENTRAL COALFIELDS LTD">CENTRAL COALFIELDS LTD</option></tr>
                     </select></td></tr>
                 <tr><td class="label-cell">Date <span class="required-star">*</span></td><td><input type="date" name="Date" id="valDate" onchange="fetchPreviousData();" required></td></tr>
                 <tr><td class="label-cell">Technician Name <span class="required-star">*</span></td><td><input type="text" name="Technician Name" id="valTech" required></td></tr>
                 <tr>
-    <td class="label-cell">Work Site <span class="required-star">*</span></td>
-    <td>
-        <select id="workSiteSelect" name="Work Site" onchange="updateFleet(); checkValidation();" required>
-            <option value="">-- Select Site --</option>
-        </select>
-    </td>
-</tr>
-
-<tr>
-    <td class="label-cell">Fleet ID <span class="required-star">*</span></td>
-    <td>
-        <select id="fleetSelect" name="Fleet ID" onchange="fetchPreviousData(); checkValidation();" required>
-            <option value="">-- Select Fleet --</option>
-        </select>
-        <div id="syncStatus" class="sync-status"></div>
-    </td>
-</tr>
+                    <td class="label-cell">Work Site <span class="required-star">*</span></td>
+                    <td>
+                        <select id="workSiteSelect" name="Work Site" onchange="updateFleet(); checkValidation();" required>
+                            <option value="">-- Select Site --</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Fleet ID <span class="required-star">*</span></td>
+                    <td>
+                        <select id="fleetSelect" name="Fleet ID" onchange="fetchPreviousData(); checkValidation();" required>
+                            <option value="">-- Select Fleet --</option>
+                        </select>
+                        <div id="syncStatus" class="sync-status"></div>
+                    </td>
+                </tr>
                 <tr><td class="label-cell">Shift <span class="required-star">*</span></td><td><select name="Shift" required><option value="">-- Select Shift --</option><option>Shift A</option><option>Shift B</option><option>Shift C</option><option>G Shift</option></select></td></tr>
                 
                 <tr><td class="label-cell">Rotation Pressure</td><td><input type="number" step="any" name="Rotation Pressure"></td></tr>                    
@@ -105,7 +104,8 @@
                     <tr><td class="label-cell">Compressor Temp (SRT40,T45& DTH) (H) (DTH)</td><td><input type="number" step="any" name="Compressor Temp (H) (DTH)"></td></tr>
                     <tr><td class="label-cell">Charging Voltage</td><td><input type="number" step="any" name="Charging Voltage"></td></tr>
                     <tr><td class="label-cell">Fuel Pressure</td><td><input type="number" step="any" name="Fuel Pressure"></td></tr>
-            </table> <div style="padding: 20px;">
+                    </table>
+                <div style="padding: 20px;">
                 <button type="submit" id="submitBtn" class="btn-submit">Submit Record</button>
             </div>
         </form>
@@ -325,6 +325,7 @@
 </script>
 </body>
 </html>
+
 
 
 
