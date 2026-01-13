@@ -60,7 +60,7 @@
                         <option value="RELIANCE POWER">RELIANCE POWER</option>
                         <option value="JAIPRAKASH ASSOCIATES LTD">JAIPRAKASH ASSOCIATES LTD</option>
                         <option value="CENTRAL COALFIELDS LTD">CENTRAL COALFIELDS LTD</option> 
-                    </select></td>
+                    </select></td></tr>
                 <tr><td class="label-cell">Date <span class="required-star">*</span></td><td><input type="date" name="Date" id="valDate" onchange="fetchPreviousData();" required></td></tr>
                 <tr><td class="label-cell">Technician Name <span class="required-star">*</span></td><td><input type="text" name="Technician Name" id="valTech" required></td></tr>
                 <tr>
@@ -105,10 +105,7 @@
                     <tr><td class="label-cell">Compressor Temp (SRT40,T45& DTH) (H) (DTH)</td><td><input type="number" step="any" name="Compressor Temp (H) (DTH)"></td></tr>
                     <tr><td class="label-cell">Charging Voltage</td><td><input type="number" step="any" name="Charging Voltage"></td></tr>
                     <tr><td class="label-cell">Fuel Pressure</td><td><input type="number" step="any" name="Fuel Pressure"></td></tr>
-                    <tr><td cl
-            </table>
-            
-            <div style="padding: 20px;">
+            </table> <div style="padding: 20px;">
                 <button type="submit" id="submitBtn" class="btn-submit">Submit Record</button>
             </div>
         </form>
@@ -310,9 +307,25 @@
         .then(() => { alert("Success! Data Saved."); location.reload(); })
         .catch(() => { alert("Submission Failed."); btn.disabled = false; btn.innerText = "Submit Record"; });
     });
+        function checkValidation() {
+    const btn = document.getElementById('submitBtn');
+    const engTemp = document.getElementById('valEngTemp').value;
+    const engOil = document.getElementById('valEngOil').value;
+    const fleet = document.getElementById('fleetSelect').value;
+
+    // Enables button only if Fleet and required fields are filled
+    if (fleet && engTemp && engOil) {
+        btn.disabled = false;
+        btn.style.opacity = "1";
+    } else {
+        btn.disabled = true;
+        btn.style.opacity = "0.5";
+    }
+}
 </script>
 </body>
 </html>
+
 
 
 
