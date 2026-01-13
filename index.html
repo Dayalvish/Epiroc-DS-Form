@@ -67,8 +67,7 @@
                 <tr><td class="label-cell">Work Site <span class="required-star">*</span></td><td><select id="workSiteSelect" name="Work Site" onchange="updateFleet();" required><option value="">-- Select Site --</option></select></td></tr>
                 <tr>
                     <tr><td class="label-cell">Fleet ID <span class="required-star">*</span></td><td><select id="fleetSelect" name="Fleet ID" onchange="checkValidation()"><option value="">-- Select Fleet --</option></select></td></tr>
-                    <td>
-                        <select id="fleetSelect" name="Fleet" onchange="fetchPreviousData();" required><option value="">-- Select Fleet --</option></select>
+                    <td>                        
                         <div id="syncStatus" class="sync-status"></div>
                     </td>
                 </tr>
@@ -304,6 +303,7 @@
 </script>
 </body>
 </html>
+
 
 
 
