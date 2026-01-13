@@ -110,13 +110,13 @@
         </form>
     </div>
 
-    script>
-    // 1. Array containing Password and URL
+    <script>
+    /* 1. Array containing Password and URL */
     const _0x5f22 = ["Epiroc@123", "https://script.google.com/macros/s/AKfycby_bKhX8cJKVhk4NxAFqoG-xaNDtZ8_jkoyVhTCAP2jIU4T3ycRAxJfkATDen13sa0TUg/exec"];
     const passKey = _0x5f22[0];
     const scriptURL = _0x5f22[1];
 
-    // 2. Security: Disable Right-Click and View Source
+    /* 2. Security: Disable Right-Click and View Source */
     document.addEventListener('contextmenu', event => event.preventDefault());
     document.onkeydown = function(e) {
         if(e.keyCode == 123) return false; 
@@ -124,25 +124,20 @@
         if(e.ctrlKey && e.keyCode == 85) return false;
     };
 
-    // 3. Unlock Function
+    /* 3. Unlock Function */
     function validateLock() {
         try {
             const input = document.getElementById('passInput').value;
-            const form = document.getElementById('residencyForm');
-            const zone = document.getElementById('lockZone');
-
             if (input === passKey) {
-                form.classList.remove('hidden');
-                zone.style.display = 'none';
+                document.getElementById('residencyForm').classList.remove('hidden');
+                document.getElementById('lockZone').style.display = 'none';
             } else {
                 alert("Incorrect Password");
             }
         } catch (err) {
-            console.error("Unlock Error:", err);
             alert("System Error. Please refresh.");
         }
     }
-
     // PARAMETER COUNTER LOGIC
     function updateCounter() {
         const total = document.querySelectorAll('.param-input').length;
@@ -345,6 +340,7 @@
 </script>
 </body>
 </html>
+
 
 
 
