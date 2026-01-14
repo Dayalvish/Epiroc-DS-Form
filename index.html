@@ -149,52 +149,51 @@
             alert("Incorrect Password");
         }
     }
-/* ACTIVE DATA LOOKUP LOGIC */
+/* Corrected Data Lookup Logic */
 function lookupRecentData(event) {
     const fId = document.getElementById('fleetSelect').value;
+    const status = document.getElementById('syncStatus');
+    
     if (!fId) { 
         alert("Select Fleet ID first"); 
         return; 
     }
     
     const btn = event.target;
-    const originalText = btn.innerText;
     btn.innerText = "Searching..."; 
     btn.disabled = true;
+    status.style.display = 'block';
+    status.innerHTML = "⏳ Under Progress..."; // Standard phrase from image_32a011
 
-    // MATCHING THE GS PARAMETERS: get=previousData and fleet=fId
+    // This URL matches your GS: get=previousData and fleet=fId
     const url = scriptURL + "?get=previousData&fleet=" + encodeURIComponent(fId);
 
     fetch(url)
     .then(r => r.json())
     .then(d => {
         if (d && !d.error) {
-            // Your GS returns an OBJECT {Header: Value}
-            // We map the values to your number inputs
+            // GS returns an object { "HeaderName": "Value" }
             const ins = document.querySelectorAll('input[type="number"]');
-            
-            /* IMPORTANT: Since the GS returns an object with headers, 
-               ensure your HTML 'name' attributes match your Sheet Headers.
-            */
             ins.forEach((input) => { 
+                // Ensure your input 'name' matches your Sheet Header exactly
                 if(d[input.name] !== undefined) {
                     input.value = d[input.name];
                 }
             });
-            
+            status.innerHTML = "✅ Parameters restored.";
             alert("Latest parameters for " + fId + " loaded successfully.");
         } else { 
-            alert("Under Progress. Will be functional shortly."); 
+            status.innerHTML = "⚠️ No previous data found.";
         }
     })
     .catch(e => {
-        console.error(e);
-        alert("Under Progress. Will be functional shortly.");
+        status.innerHTML = "❌ Sync Error.";
     })
     .finally(() => { 
-        btn.innerText = originalText; 
+        btn.innerText = "Fetch Last Entry for this Machine"; 
         btn.disabled = false; 
     });
+}
 }
     /* 3. MINIMAL DATA MAPPING (We will add your full list later) */
     const customerToSites = {
@@ -374,6 +373,7 @@ function lookupRecentData(event) {
 </script>
 </body>
 </html>
+
 
 
 
