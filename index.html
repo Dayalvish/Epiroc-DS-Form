@@ -147,19 +147,21 @@ const passKey = _0x1a2b[0];
     };
 
     /* 3. Unlock Function */
-    function validateLock() {
-        try {
-            const input = document.getElementById('passInput').value;
-            if (input === passKey) {
-                document.getElementById('residencyForm').classList.remove('hidden');
-                document.getElementById('lockZone').style.display = 'none';
-            } else {
-                alert("Incorrect Password");
-            }
-        } catch (err) {
-            alert("System Error. Please refresh.");
-        }
+   function validateLock() {
+    const input = document.getElementById('passInput').value;
+    const label = document.getElementById('statusLabel');
+    
+    if (input === passKey) {
+        document.getElementById('residencyForm').classList.remove('hidden');
+        document.getElementById('lockZone').style.display = 'none';
+        
+        // This updates the label shown in your screenshot
+        label.innerText = "Unlocked";
+        label.className = "status-tag unlocked"; 
+    } else {
+        alert("Incorrect Password");
     }
+}
     // PARAMETER COUNTER LOGIC
     function updateCounter() {
         const total = document.querySelectorAll('.param-input').length;
@@ -374,6 +376,7 @@ function lookupRecentData() {
 </script>
 </body>
 </html>
+
 
 
 
