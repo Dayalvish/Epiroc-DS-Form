@@ -49,33 +49,6 @@
             <table>
                 <tr>
                     <td class="label-cell">Customer Name <span class="required-star">*</span></td>
-                    <td><select id="customerSelect" name="Customer Name" onchange="updateSites();" required>
-                        <option value="">-- Select --</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td class="label-cell">Fleet ID <span class="required-star">*</span></td>
-                    <td>
-                        <select id="fleetSelect" name="Fleet ID" onchange="fetchPreviousData();" required>
-                            <option value="">-- Select Fleet --</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-cell">Data Sync</td>
-                    <td>
-                        <button type="button" onclick="fetchPreviousData()" style="background:#007bff; color:white; width:100%; border:none; padding:8px; border-radius:4px;">
-                            Fetch Last Entry for this Machine
-                        </button>
-                        <div id="syncStatus" class="sync-status" style="margin-top:5px; display:block;"></div>
-                    </td>
-                </tr>
-
-        <form id="residencyForm" class="hidden">
-            <input type="hidden" name="Fleet Source" value="DS Fleet (Form B)">
-            <table>
-                <tr>
-                    <td class="label-cell">Customer Name <span class="required-star">*</span></td>
                     <td>
                         <select id="customerSelect" name="Customer Name" onchange="updateSites();" required>
                             <option value="">-- Select Customer --</option>
@@ -93,6 +66,39 @@
                             <option value="JAIPRAKASH ASSOCIATES LTD">JAIPRAKASH ASSOCIATES LTD</option>
                             <option value="CENTRAL COALFIELDS LTD">CENTRAL COALFIELDS LTD</option>
                         </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Date <span class="required-star">*</span></td>
+                    <td><input type="date" name="Date" id="valDate" onchange="fetchPreviousData();" required></td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Technician Name <span class="required-star">*</span></td>
+                    <td><input type="text" name="Technician Name" id="valTech" required></td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Work Site <span class="required-star">*</span></td>
+                    <td>
+                        <select id="workSiteSelect" name="Work Site" onchange="updateFleet();" required>
+                            <option value="">-- Select Site --</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Fleet ID <span class="required-star">*</span></td>
+                    <td>
+                        <select id="fleetSelect" name="Fleet ID" onchange="fetchPreviousData();" required>
+                            <option value="">-- Select Fleet --</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Data Sync</td>
+                    <td>
+                        <button type="button" onclick="fetchPreviousData()" style="background:#007bff; color:white; width:100%; border:none; padding:8px; border-radius:4px;">
+                            Fetch Last Entry for this Machine
+                        </button>
+                        <div id="syncStatus" class="sync-status" style="margin-top:5px; display:block;"></div>
                     </td>
                 </tr>
                 <tr>
@@ -392,6 +398,7 @@ function lookupRecentData() {
 </script>
 </body>
 </html>
+
 
 
 
