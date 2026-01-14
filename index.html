@@ -132,57 +132,65 @@
         </form>
     </div>
     <script>
-   /* Corrected Scrambled Block for DS */
-var _0x5f22 = ["\x45\x70\x69\x72\x6f\x63\x40\x31\x32\x33", "\x68\x74\x74\x70\x73\x3a\x2f\x2f\x73\x63\x72\x69\x70\x74\x2e\x67\x6f\x6f\x67\x6c\x65\x2e\x63\x6f\x6d\x2f\x6d\x61\x63\x72\x6f\x73\x2f\x73\x2f\x41\x4b\x66\x79\x63\x62\x7a\x5f\x78\x77\x74\x6b\x76\x55\x76\x64\x30\x5a\x57\x44\x38\x7a\x50\x38\x6c\x57\x6b\x59\x57\x55\x55\x74\x30\x68\x33\x6c\x47\x6b\x6e\x4a\x57\x4d\x74\x69\x69\x49\x70\x4b\x49\x48\x59\x7a\x62\x6b\x35\x64\x39\x4d\x6e\x71\x79\x4f\x42\x56\x79\x63\x61\x55\x70\x36\x44\x48\x2f\x65\x78\x65\x63"];
-const passKey = _0x5f22[0];
-const scriptURL = _0x5f22[1];
+   /* 1. Scrambled Connection (URL & Password) */
+    var _0x5f22 = ["\x45\x70\x69\x72\x6f\x63\x40\x31\x32\x33", "\x68\x74\x74\x70\x73\x3a\x2f\x2f\x73\x63\x72\x69\x70\x74\x2e\x67\x6f\x6f\x67\x6c\x65\x2e\x63\x6f\x6d\x2f\x6d\x61\x63\x72\x6f\x73\x2f\x73\x2f\x41\x4b\x66\x79\x63\x62\x7a\x5f\x78\x77\x74\x6b\x76\x55\x76\x64\x30\x5a\x57\x44\x38\x7a\x50\x38\x6c\x57\x6b\x59\x57\x55\x55\x74\x30\x68\x33\x6c\x47\x6b\x6e\x4a\x57\x4d\x74\x69\x69\x49\x70\x4b\x49\x48\x59\x7a\x62\x6b\x35\x64\x39\x4d\x6e\x71\x79\x4f\x42\x56\x79\x63\x61\x55\x70\x36\x44\x48\x2f\x65\x78\x65\x63"];
+    const passKey = _0x5f22[0];
+    const scriptURL = _0x5f22[1];
 
-/* 2. Unlock Function - Corrected for your current labels */
-function validateLock() {
-    const input = document.getElementById('passInput').value;
-    const label = document.getElementById('statusLabel');
-    
-    if (input === passKey) {
-        document.getElementById('residencyForm').classList.remove('hidden');
-        document.getElementById('lockZone').style.display = 'none';
+    /* 2. Security: Disable Right-Click and View Source */
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.onkeydown = function(e) {
+        if(e.keyCode == 123) return false; 
+        if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) return false;
+        if(e.ctrlKey && e.keyCode == 85) return false;
+    };
+
+    /* 3. Unlock Function */
+    function validateLock() {
+        const input = document.getElementById('passInput').value;
+        const statusLabel = document.getElementById('statusLabel');
         
-        // Updates the label from Locked (image_25cbfb.png) to Unlocked (image_26439d.png)
-        label.innerText = "Unlocked";
-        label.className = "status-tag unlocked"; 
-    } else {
-        alert("Incorrect Password");
-    }
-}
-
-/* 3. Fetch Data - Optimized for the DS Fleet Structure */
-async function fetchPreviousData() {
-    const fleet = document.getElementById('fleetSelect').value;
-    const status = document.getElementById('syncStatus');
-    if (!fleet) { alert("Select Fleet ID first"); return; }
-    
-    status.style.display = 'block';
-    status.innerText = "⏳ Syncing latest parameters...";
-
-    try {
-        const response = await fetch(`${scriptURL}?fleetId=${encodeURIComponent(fleet)}`);
-        const result = await response.json();
-
-        if (result && result.length > 0) {
-            // Fills all numerical inputs starting from Index 8 (Column I)
-            const ins = document.querySelectorAll('input[type="number"]');
-            ins.forEach((input, i) => { 
-                if(result[i+8] !== undefined && result[i+8] !== "") {
-                    input.value = result[i+8];
-                }
-            });
-            status.innerText = "✅ Values restored successfully";
+        if (input === passKey) {
+            document.getElementById('residencyForm').classList.remove('hidden');
+            document.getElementById('lockZone').style.display = 'none';
+            statusLabel.innerText = "Unlocked";
+            statusLabel.className = "status-tag unlocked";
         } else {
-            status.innerText = "Under Progress. Will be functional shortly.";
+            alert("Incorrect Password");
         }
-    } catch (e) {
-        status.innerText = "Under Progress. Will be functional shortly.";
     }
-}
+
+    /* 4. Submission Logic */
+    const form = document.getElementById('residencyForm');
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        if(btn) { btn.innerText = "Processing..."; btn.disabled = true; }
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            alert("Data Captured Successfully!");
+            form.reset();
+            if(btn) { btn.innerText = "Submit Record"; btn.disabled = false; }
+            document.getElementById('statusLabel').innerText = "Locked";
+            document.getElementById('statusLabel').className = "status-tag locked";
+            document.getElementById('residencyForm').classList.add('hidden');
+            document.getElementById('lockZone').style.display = 'block';
+        })
+        .catch(error => {
+            alert("Submission Failed. Check Connection.");
+            if(btn) { btn.innerText = "Submit Record"; btn.disabled = false; }
+        });
+    });
+
+    /* 5. Fetch Logic (Under Progress) */
+    async function fetchPreviousData() {
+        const fleet = document.getElementById('fleetSelect').value;
+        const status = document.getElementById('syncStatus');
+        if (!fleet) return;
+        status.style.display = 'block';
+        status.innerText = "⏳ Under Progress. Will be functional shortly.";
+    }
     // PARAMETER COUNTER LOGIC
     function updateCounter() {
         const total = document.querySelectorAll('.param-input').length;
@@ -408,6 +416,7 @@ function lookupRecentData() {
 </script>
 </body>
 </html>
+
 
 
 
