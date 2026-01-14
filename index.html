@@ -147,26 +147,39 @@ const passKey = _0x1a2b[0];
         status.innerText = `Parameters Filled: ${filled} / ${total}`;
     }
 
-    async function fetchPreviousData() {
-        const fleet = document.getElementById('fleetSelect').value;
-        const date = document.getElementById('valDate').value;
-        const status = document.getElementById('syncStatus');
-        if (fleet && date) {
-            status.style.display = 'block'; 
-            status.innerText = "⏳ Syncing previous data...";
-            try {
-                const response = await fetch(`${scriptURL}?get=previousData&fleet=${encodeURIComponent(fleet)}&date=${date}`);
-                const result = await response.json();
-                if (!result.error) {
-                    document.querySelectorAll('.param-input').forEach(input => {
-                        if (result[input.name] !== undefined) input.value = result[input.name];
-                    });
-                    status.innerText = "✅ Values restored";
-                    updateCounter(); // Update counter after auto-fill
-                } else { status.innerText = "ℹ️ New entry for this date"; }
-            } catch (e) { status.innerText = "⚠️ Sync Error"; }
+    /* 4. Fetch Function for DS Fleet */
+function lookupRecentData() {
+    const fId = document.getElementById('fleetSelect').value;
+    if (!fId) { alert("Select Fleet ID first"); return; }
+    
+    const btn = event.target;
+    const originalText = btn.innerText;
+    btn.innerText = "Searching..."; btn.disabled = true;
+
+    // Connects to the DS scriptURL to get latest machine parameters
+    fetch(scriptURL + "?fleetId=" + encodeURIComponent(fId))
+    .then(r => r.json())
+    .then(d => {
+        if (d && d.length > 0) {
+            const ins = document.querySelectorAll('input[type="number"]');
+            ins.forEach((input, i) => { 
+                // Index 8 maps to Column I in your DS ParameterDb
+                if(d[i+8] !== undefined && d[i+8] !== "") {
+                    input.value = d[i+8];
+                }
+            });
+            alert("Latest DS parameters for " + fId + " restored.");
+        } else { 
+            // Phase II Placeholder Message
+            alert("Under Progress. Will be functional shortly."); 
         }
-    }
+    })
+    .catch(e => alert("Under Progress. Will be functional shortly."))
+    .finally(() => { 
+        btn.innerText = originalText; 
+        btn.disabled = false; 
+    });
+}
 
     const customerToSites = {
         "TATA STEEL LTD": ["Noamundi Iron Ore Mines", "Khondbond Iron Ore Mines", "Joda Iron Ore Mines"],
@@ -338,6 +351,7 @@ const passKey = _0x1a2b[0];
 </script>
 </body>
 </html>
+
 
 
 
