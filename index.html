@@ -157,29 +157,38 @@ function lookupRecentData(event) {
         return; 
     }
     
-    // Identifies the button that was clicked
     const btn = event.target;
     const originalText = btn.innerText;
     btn.innerText = "Searching..."; 
     btn.disabled = true;
 
-    fetch(scriptURL + "?fleetId=" + encodeURIComponent(fId))
+    // MATCHING THE GS PARAMETERS: get=previousData and fleet=fId
+    const url = scriptURL + "?get=previousData&fleet=" + encodeURIComponent(fId);
+
+    fetch(url)
     .then(r => r.json())
     .then(d => {
-        if (d && d.length > 0) {
+        if (d && !d.error) {
+            // Your GS returns an OBJECT {Header: Value}
+            // We map the values to your number inputs
             const ins = document.querySelectorAll('input[type="number"]');
-            ins.forEach((input, i) => { 
-                // Starts mapping from Column I (Index 8)
-                if(d[i+8] !== undefined && d[i+8] !== "") {
-                    input.value = d[i+8];
+            
+            /* IMPORTANT: Since the GS returns an object with headers, 
+               ensure your HTML 'name' attributes match your Sheet Headers.
+            */
+            ins.forEach((input) => { 
+                if(d[input.name] !== undefined) {
+                    input.value = d[input.name];
                 }
             });
+            
             alert("Latest parameters for " + fId + " loaded successfully.");
         } else { 
             alert("Under Progress. Will be functional shortly."); 
         }
     })
     .catch(e => {
+        console.error(e);
         alert("Under Progress. Will be functional shortly.");
     })
     .finally(() => { 
@@ -365,6 +374,7 @@ function lookupRecentData(event) {
 </script>
 </body>
 </html>
+
 
 
 
