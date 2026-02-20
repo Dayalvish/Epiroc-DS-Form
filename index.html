@@ -61,28 +61,28 @@
     </td>
 </tr>
                 <tr><td class="label-cell">Shift <span class="required-star">*</span></td><td><select name="fb_shift" id="valShift" onchange="checkValidation()" required><option value="">-- Select Shift --</option><option>Shift A</option><option>Shift B</option><option>Shift C</option><option>G Shift</option></select></td></tr>
-                <tr><td class="label-cell">Rotation Pressure</td><td><input type="number" step="any" name="fb_rot_press" min="0" max="120" placeholder="0 - 120" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Receiver Pr NoLoad (DTH & DS)</td><td><input type="number" step="any" name="fb_recv_pr_noload" min="0" max="16" placeholder="0 - 16" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Receiver Pr Unload (DTH & DS)</td><td><input type="number" step="any" name="fb_recv_pr_unload" min="0" max="30" placeholder="0 - 30" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Receiver Pr Load (DTH & DS)</td><td><input type="number" step="any" name="fb_recv_pr_load" min="0" max="30" placeholder="0 - 30" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Reduced Air pressure (DTH)</td><td><input type="number" step="any" name="fb_reduced_air_pr" min="0" max="30" placeholder="0 - 30" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Full Air Set Pr (DTH)</td><td><input type="number" step="any" name="fb_full_air_set_pr" min="0" max="30" placeholder="0 - 30" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Air Pressure Full</td><td><input type="number" step="any" name="fb_air_pr_full" min="0" max="30" placeholder="0 - 30" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Interstage Pr Load (DTH)</td><td><input type="number" step="any" name="fb_interstage_pr_load" min="0" max="30" placeholder="0 - 30" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Feed Pr High Impact</td><td><input type="number" step="any" name="fb_feed_pr_high_impact" min="0" max="150" placeholder="0 - 150" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Compressor Load (Smartroc & PV)</td><td><input type="number" step="any" name="fb_comp_load" min="0" max="100" placeholder="0 - 100" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Engine RPM Drilling</td><td><input type="number" step="any" name="fb_engine_rpm_drilling" min="0" max="2500" placeholder="0 - 2500" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Engine Temp *</td><td><input type="number" step="any" name="fb_engine_temp" id="valEngTemp" min="0" max="130" placeholder="0 - 130" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Hyd-Oil Temp</td><td><input type="number" step="any" name="fb_hyd_oil_temp" min="0" max="100" placeholder="0 - 100" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Ambient Temp</td><td><input type="number" step="any" name="fb_ambient_temp" min="-55" max="55" placeholder="-55 - 55" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Engine load Drilling</td><td><input type="number" step="any" name="fb_engine_load_drilling" min="0" max="100" placeholder="0 - 100" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Boost Pressure</td><td><input type="number" step="any" name="fb_boost_pressure" min="0" max="2" placeholder="0 - 2" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Engine oil pressure *</td><td><input type="number" step="any" name="fb_engine_oil_pressure" id="valEngOil" min="0" max="8" placeholder="0 - 8" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Air intake temp</td><td><input type="number" step="any" name="fb_air_intake_temp" min="0" max="100" placeholder="0 - 100" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Compressor Temp (L & DS)</td><td><input type="number" step="any" name="fb_comp_temp_lds" min="0" max="150" placeholder="0 - 150" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Compressor Temp (H) (DTH)</td><td><input type="number" step="any" name="fb_comp_temp_srt40" min="0" max="150" placeholder="0 - 150" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Charging Voltage</td><td><input type="number" step="any" name="fb_charging_voltage" min="0" max="32" placeholder="0 - 32" oninput="checkValidation()"></td></tr>
-        <tr><td class="label-cell">Fuel Pressure</td><td><input type="number" step="any" name="fb_fuel_pressure" min="0" max="25" placeholder="0 - 25" oninput="checkValidation()"></td></tr>
+                <tr><td class="label-cell">Rotation Pressure</td><td><input type="number" step="any" name="fb_rot_press" min="0" max="120" placeholder="Limit: 0 - 120" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Receiver Pr NoLoad (DTH & DS)</td><td><input type="number" step="any" name="fb_recv_pr_noload" min="0" max="16" placeholder="Limit: 0 - 16" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Receiver Pr Unload (DTH & DS)</td><td><input type="number" step="any" name="fb_recv_pr_unload" min="0" max="30" placeholder="Limit: 0 - 30" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Receiver Pr Load (DTH & DS)</td><td><input type="number" step="any" name="fb_recv_pr_load" min="0" max="30" placeholder="Limit: 0 - 30" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Reduced Air pressure (DTH)</td><td><input type="number" step="any" name="fb_reduced_air_pr" min="0" max="30" placeholder="Limit: 0 - 30" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Full Air Set Pr (DTH)</td><td><input type="number" step="any" name="fb_full_air_set_pr" min="0" max="30" placeholder="Limit: 0 - 30" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Air Pressure Full</td><td><input type="number" step="any" name="fb_air_pr_full" min="0" max="30" placeholder="Limit: 0 - 30" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Interstage Pr Load (DTH)</td><td><input type="number" step="any" name="fb_interstage_pr_load" min="0" max="30" placeholder="Limit: 0 - 30" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Feed Pr High Impact</td><td><input type="number" step="any" name="fb_feed_pr_high_impact" min="0" max="150" placeholder="Limit: 0 - 150" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Compressor Load (Smartroc & PV)</td><td><input type="number" step="any" name="fb_comp_load" min="0" max="100" placeholder="Limit: 0 - 100" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Engine RPM Drilling</td><td><input type="number" step="any" name="fb_engine_rpm_drilling" min="0" max="2500" placeholder="Limit: 0 - 2500" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Engine Temp *</td><td><input type="number" step="any" name="fb_engine_temp" id="valEngTemp" min="0" max="130" placeholder="Limit: 0 - 130" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Hyd-Oil Temp</td><td><input type="number" step="any" name="fb_hyd_oil_temp" min="0" max="100" placeholder="Limit: 0 - 100" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Ambient Temp</td><td><input type="number" step="any" name="fb_ambient_temp" min="-55" max="55" placeholder="Limit: -55 - 55" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Engine load Drilling</td><td><input type="number" step="any" name="fb_engine_load_drilling" min="0" max="100" placeholder="Limit: 0 - 100" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Boost Pressure</td><td><input type="number" step="any" name="fb_boost_pressure" min="0" max="2" placeholder="Limit: 0 - 2" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Engine oil pressure *</td><td><input type="number" step="any" name="fb_engine_oil_pressure" id="valEngOil" min="0" max="8" placeholder="Limit: 0 - 8" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Air intake temp</td><td><input type="number" step="any" name="fb_air_intake_temp" min="0" max="100" placeholder="Limit: 0 - 100" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Compressor Temp (L & DS)</td><td><input type="number" step="any" name="fb_comp_temp_lds" min="0" max="150" placeholder="Limit: 0 - 150" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Compressor Temp (H) (DTH)</td><td><input type="number" step="any" name="fb_comp_temp_srt40" min="0" max="150" placeholder="Limit: 0 - 150" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Charging Voltage</td><td><input type="number" step="any" name="fb_charging_voltage" min="0" max="32" placeholder="Limit: 0 - 32" oninput="checkValidation()"></td></tr>
+        <tr><td class="label-cell">Fuel Pressure</td><td><input type="number" step="any" name="fb_fuel_pressure" min="0" max="25" placeholder="Limit: 0 - 25" oninput="checkValidation()"></td></tr>
 </table>
                 <div style="padding: 20px;">
                 <button type="submit" id="submitBtn" class="btn-submit">Submit Record</button>
@@ -288,15 +288,13 @@
         }
     }
 
-    /* 1. INSTANT VALIDATION & BUTTON ENABLING */
+   /* 1. INSTANT VALIDATION */
 function checkValidation() {
-    // A. Trigger the Hard Limit (Reset to 0)
     const activeEl = document.activeElement;
     if (activeEl && activeEl.type === 'number') {
         forceLimitToZero(activeEl);
     }
 
-    // B. Enable/Disable Submit Button based on Required Fields
     const requiredFields = [
         document.getElementById('customerSelect').value,
         document.getElementById('valDate').value,
@@ -308,93 +306,52 @@ function checkValidation() {
         document.getElementById('valEngOil').value
     ];
 
-    const isInvalid = requiredFields.some(v => !v || v.trim() === "");
-    document.getElementById('submitBtn').disabled = isInvalid;
+    document.getElementById('submitBtn').disabled = requiredFields.some(v => !v || v.trim() === "");
 }
 
-/* 2. THE HARD LIMIT (RESET TO 0) LOGIC */
+/* 2. RESET TO ZERO LOGIC */
 function forceLimitToZero(input) {
     if (!input.min || !input.max) return;
-    
     let val = parseFloat(input.value);
     let min = parseFloat(input.min);
     let max = parseFloat(input.max);
 
     if (isNaN(val)) return;
 
-    // Logic: If user types outside allowed range, reset to 0
     if (val > max || (val < min && input.value.length >= String(min).length)) {
         input.value = 0; 
         input.style.backgroundColor = "#ffcccc";
-        alert("Invalid Value! Range: " + min + " to " + max + ". Resetting to 0.");
+        alert("Guidance Error: Value reset to 0. Please enter a number between " + min + " and " + max + ".");
         setTimeout(() => { input.style.backgroundColor = ""; }, 500);
-        input.focus();
     }
 }
 
-/* 3. SUBMISSION LOGIC (Updated to catch Column E) */
+/* 3. SUBMISSION LOGIC (Fixes Column E Status) */
 const form = document.getElementById('residencyForm');
 form.addEventListener('submit', e => {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
-    btn.innerText = "Processing..."; 
-    btn.disabled = true;
+    btn.innerText = "Processing..."; btn.disabled = true;
 
-    // Create the data package
     const formData = new FormData(form);
     
-    // CRITICAL: Manually add "Status" to match Column E in your Sheet
-    // If you don't have a statusLabel, it will send "Active"
+    // Inject Status for Column E
     const statusLabel = document.getElementById('statusLabel');
     const statusValue = statusLabel ? statusLabel.innerText : "Active";
     formData.append('Status', statusValue); 
 
     fetch(scriptURL, { method: 'POST', body: formData })
-    .then(response => {
+    .then(() => {
         alert("Data Captured Successfully!");
         form.reset();
-        if (typeof updateSites === "function") updateSites(); // Reset site dropdown
-        btn.innerText = "Submit Record"; 
-        btn.disabled = false;
+        if (typeof updateSites === "function") updateSites();
+        btn.innerText = "Submit Record"; btn.disabled = false;
     })
-    .catch(error => {
-        alert("Submission Failed. Check GS deployment.");
-        btn.innerText = "Submit Record"; 
-        btn.disabled = false;
+    .catch(() => {
+        alert("Submission Failed.");
+        btn.innerText = "Submit Record"; btn.disabled = false;
     });
 });
-
-/* 4. FETCH LOGIC */
-async function fetchPreviousData() {
-    const fleet = document.getElementById('fleetSelect').value;
-    const status = document.getElementById('syncStatus');
-    if (!fleet) {
-        alert("Please select a Fleet ID first.");
-        return;
-    }
-    status.style.display = 'block';
-    status.innerText = "⏳ Under Progress...";
-}
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
